@@ -5,7 +5,7 @@
 
 
 var threeDotsMenuSelector = "#ow3 > div.T4LgNb > div > div:nth-child(8) > div.crqnQb > div.rG0ybd.LCXT6 > div.f0WtFf > div.M5zXed > div";
-var settingsSpanSelector = "body > div.JPdR6b.e5Emjc.CIYi0d.jvUMfb.yOCuXd.qjTEB > div > div > span:nth-child(10)";
+var settingsSpanSelector = "body > div.JPdR6b.e5Emjc.CIYi0d.jvUMfb.yOCuXd.qjTEB > div > div > span:last-child";
 var inputDropDownMenuSelector = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.zN0eDd.Kdui9b.vDc8Ic.hFEqNb.J9Nfi.iWO5td > span > div.F1dYic.HQRfgd > div.n1etMc.gMPiLc > div.ejeiye > div > div:nth-child(1) > div > div:nth-child(1) > div.nBky5e > div > div.arczj > div > div:nth-child(1) > div.ry3kXd > div.MocG8c.LMgvRb.KKjvXb";
 var currentInputSelector = "div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb.KKjvXb > span.vRMGwf.oJeWuf";
 
@@ -103,7 +103,7 @@ function toggle(){
 
                                 settingsExit.click();
                                 console.log("Succes. Switched to: " + textLowerCase);
-                            },350)
+                            },250)
                         },250);
                         return false;
                     }
@@ -111,11 +111,11 @@ function toggle(){
                 if(!localised){
                     console.error("Cannot localise input");
                 }
-           },600);
+           },800);
 
-        }, 800);
+        }, 900);
 
-    }, 800);
+    }, 900);
 }
 
 

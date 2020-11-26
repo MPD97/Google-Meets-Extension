@@ -10,7 +10,7 @@
     "background" : {
         "scripts" : ["background.js"]
     },
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab", "tabs"],
     "content_scripts": [
         {
           "matches": [

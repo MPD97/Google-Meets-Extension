@@ -3,70 +3,123 @@
 
 
 
-document.querySelector("#ow3 > div.T4LgNb > div > div:nth-child(8) > div.crqnQb > div.rG0ybd.LCXT6 > div.f0WtFf > div.M5zXed > div").click();
 
-function toggle(microphone){
-   
+var threeDotsMenuSelector = "#ow3 > div.T4LgNb > div > div:nth-child(8) > div.crqnQb > div.rG0ybd.LCXT6 > div.f0WtFf > div.M5zXed > div";
+var settingsSpanSelector = "body > div.JPdR6b.e5Emjc.CIYi0d.jvUMfb.yOCuXd.qjTEB > div > div > span:nth-child(10)";
+var inputDropDownMenuSelector = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.zN0eDd.Kdui9b.vDc8Ic.hFEqNb.J9Nfi.iWO5td > span > div.F1dYic.HQRfgd > div.n1etMc.gMPiLc > div.ejeiye > div > div:nth-child(1) > div > div:nth-child(1) > div.nBky5e > div > div.arczj > div > div:nth-child(1) > div.ry3kXd > div.MocG8c.LMgvRb.KKjvXb";
+var currentInputSelector = "div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb.KKjvXb > span.vRMGwf.oJeWuf";
+
+var allInpuDevicesSelector = "div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb > span.vRMGwf.oJeWuf";
+var allInputDevicesClickableSelector = "div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb > span.vRMGwf.oJeWuf";
+
+var settingsExitSelector = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.zN0eDd.Kdui9b.vDc8Ic.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.tOrNgd.qRUolc > div.VY7JQd > div";
+
+function toggle(){
+    document.querySelector(threeDotsMenuSelector).click();
+
     setTimeout(function (){
-        var js = document.querySelector("body > div.JPdR6b.e5Emjc.CIYi0d.jvUMfb.yOCuXd.qjTEB > div > div > span:nth-child(10)");
-        SimulateClick(js);
+        console.debug ("settingsSpanSelector: " + settingsSpanSelector);
+        let settingsSpan = document.querySelector(settingsSpanSelector);
+        if(settingsSpan === null){
+            console.error("Element not found: " + settingsSpanSelector);
+            return false;
+        }
+
+        SimulateClick(settingsSpan);
 
         setTimeout(function (){
-            var micSettings = document.querySelector("#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.zN0eDd.Kdui9b.vDc8Ic.hFEqNb.J9Nfi.iWO5td > span > div.F1dYic.HQRfgd > div.n1etMc.gMPiLc > div.ejeiye > div > div:nth-child(1) > div > div:nth-child(1) > div.nBky5e > div > div.arczj > div > div:nth-child(1) > div.ry3kXd > div.MocG8c.LMgvRb.KKjvXb")
-            micSettings.click();
-           
-            setTimeout(function(){
-            var old = $("div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb.KKjvXb > span.vRMGwf.oJeWuf").text().toLowerCase();
-            console.debug("Zaznaczony: " + old);
-            
-            var search = undefined;
-
-            // if(old.indexOf("default") >= 0){
-            //     search = "miks"
-            // }else{
-            //     search = "default";
-            // }
-
-            if(old.indexOf("domyślny") >= 0 ){
-                search = "mix"
-            }else{
-                search = "domyślny";
+            let inputDropDownMenu = document.querySelector(inputDropDownMenuSelector);
+            if(inputDropDownMenu === null){
+                console.error("Element not found: " + inputDropDownMenuSelector);
+                return false;
             }
 
-            console.debug("Szukam: " + search);
-            var jObj = $("div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb > span.vRMGwf.oJeWuf");
-            var obj = document.querySelectorAll("div.OA0qNb.ncFHed.yOCuXd > div.MocG8c.LMgvRb > span.vRMGwf.oJeWuf")
-
-            console.debug(jObj);
-            console.debug(obj);
-
-            jObj.each(function(i, ele) {
-                var lf = jObj.eq(i);
-                let t = lf.text();
-                let tl = t.toLowerCase();
-                let c = tl.indexOf(search) >= 0;
-                if(c){
-                    console.debug(tl);
-                    setTimeout(function (){
-                        var par = lf.parent();
-                        console.debug(par);
-                        obj[i].parentElement.click();
-
-                        setTimeout(function(){
-                            document.querySelector("#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.zN0eDd.Kdui9b.vDc8Ic.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.tOrNgd.qRUolc > div.VY7JQd > div").click();
-                        },350)
-                    },250);
+            inputDropDownMenu.click();
+           
+            setTimeout(function(){
+                let currentInput = $(currentInputSelector);
+                if(currentInput === null){
+                    console.error("Element not found: " + currentInputSelector);
                     return false;
                 }
-            });
-            console.error("Nie znalazłem: " + search);
-           },900);
 
-        }, 900);
+                var currentInputValue = currentInput.text().toLowerCase();
+                console.debug("Selected Input Device: " + currentInputValue);
+                
+              
+                let toggleDefault = undefined;
+                if(currentInputValue.indexOf("default") >= 0 || currentInputValue.indexOf("domyślny") >= 0){
+                    toggleDefault = false;
+                }else {
+                    toggleDefault = true;
+                }
 
-    }, 900);
+                console.debug("Toggle Default Input Device: " + toggleDefault);
+
+                var allInputDevices = $(allInpuDevicesSelector);
+                if(allInputDevices === null){
+                    console.error("Element not found: " + allInpuDevicesSelector);
+                    return false;
+                }
+
+                var allClickableInputDecices = document.querySelectorAll(allInputDevicesClickableSelector);
+                if(allClickableInputDecices === null){
+                    console.error("Element not found: " + allInputDevicesClickableSelector);
+                    return false;
+                }
+                var localised = false;
+                allInputDevices.each(function(i, ele) {
+                    let searchPL = undefined;
+                    let searchEN = undefined;
+                     if(toggleDefault){
+                        searchPL = "domyślny";
+                        searchEN = "default";
+                    }else{
+                        searchPL = "miks";
+                        searchEN = "mix";
+                    }
+
+                    let element = allInputDevices.eq(i);
+                    let elementText = element.text();
+                    let textLowerCase = elementText.toLowerCase();
+                    let resultPL = textLowerCase.indexOf(searchPL) >= 0;
+                    let resultEN = textLowerCase.indexOf(searchEN) >= 0;
+
+                    if(resultPL || resultEN){
+                        console.debug("Localised: " + textLowerCase);
+                        localised = true;
+
+                        setTimeout(function (){
+                            let par = element.parent();
+                            console.debug(par);
+                            allClickableInputDecices[i].parentElement.click();
+
+                            setTimeout(function(){
+                                let settingsExit = document.querySelector(settingsExitSelector);
+                                if(settingsExit === null){
+                                    console.error("Element not found: " + settingsExitSelector);
+                                    return false;
+                                }
+
+                                settingsExit.click();
+                                console.log("Succes. Switched to: " + textLowerCase);
+                            },350)
+                        },250);
+                        return false;
+                    }
+                });
+                if(!localised){
+                    console.error("Cannot localise input");
+                }
+           },600);
+
+        }, 800);
+
+    }, 800);
 }
-toggle(true);
+
+
+
 function SimulateClick(jsEle){
     if (jsEle) {
         triggerMouseEvent (jsEle, "mouseover");
@@ -82,4 +135,8 @@ function SimulateClick(jsEle){
         clickEvent.initEvent (eventType, true, true);
         node.dispatchEvent (clickEvent);
     }
+}
+
+if(window.location.href.indexOf("https://meet.google.com/") >= 0){
+    toggle();
 }

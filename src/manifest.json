@@ -12,7 +12,6 @@
 		]
 	},
 	"permissions": [
-		"activeTab",
-		"https://gist.githubusercontent.com/MPD97/"
+		"activeTab"
 	]
 }

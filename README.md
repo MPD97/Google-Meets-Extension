@@ -1,4 +1,4 @@
-# Google-Meets-Extension
+# Google Meets - Extension for switching input device
 
 <p>Extension for switching between Default (Domyślne) input device to mix (miks) stereo.</p>
 <br/>

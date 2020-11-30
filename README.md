@@ -7,6 +7,6 @@
 <h1>Installation</h1>
 <ul>
   <li>Import src folder into extension in your browser</li>
-  <li>Join meetings in https://meet.google.com/</li>
-  <li>Click extension icon</li>
+  <li>Join meeting in https://meet.google.com/</li>
+  <li>Click on extension icon</li>
 </ul>
